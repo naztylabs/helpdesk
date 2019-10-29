@@ -7,9 +7,9 @@
     This will not log off a RDP session as that requires the console variable in the command line to be changed to rdp-tcp. You can also leverage Show-LOU to grab a logged in Session ID and then run the Logoff command with that specific session id 
 .Parameter Keyword
 .Example
-    PS C:\>Remote-Logoff -ComputerName FSO0198 -ID 2
+    PS C:\>Remote-Logoff -ComputerName Computer.Desktop -ID 2
 .Example
-    PS C:\>Remote-Logoff FSO0198 3
+    PS C:\>Remote-Logoff Computer.Desktop 3
 .Example
     PS C:\>Logoff /Server:ComputerName 3
     *In these examples please note that ComputerName refers to the computer you're contacting and the number 3 is a session ID that is displayed by the Qwinsta or Show-LoggedOnUser command.*
