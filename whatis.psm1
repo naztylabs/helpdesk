@@ -9,17 +9,16 @@ function whatis {
     This command leverages the Get-CIMinstance command to quickly grab BIOS information, monitor information, as well as the make and model of the computer in question. 
     Will also grab the current user and their logon time.
 .Parameter ComputerName
-    The computername you wish to identify
+    The Computer you wish to identify
 .Parameter Credential
     The elevated account you wish to run the command as. 
     Only necessary for the PSSession to authorize (and if you wish to use IP instead of ComputerName)
 .Example
-    PS C:\>whatis -ComputerName FSO0007 -Credential LAtylernazifi
+    PS C:\>whatis -ComputerName Computer.Desktop -Credential Local.Admin
 .Notes
     Created by Tyler Nazifi - 08/07/2019; updated 08/23/2019
     08/21/2019 - This function will now grab monitor make, model, ID, and serial.
     08/23/2019 - I had the output of the monitor information format as a table so it can be easily inserted into a spreadsheet. 
-    08/23/2019 - I also added in the ability to search AD for the computer description because, well, duh. 
 #>
 
 [CmdletBinding()]
@@ -32,10 +31,6 @@ param(
     Process {
         Write-Host ("Checking connection to {0}" -f $ComputerName) -ForegroundColor Yellow
             if(Test-Connection -ComputerName $ComputerName -Count 1 -Quiet) {
-                    ## Get the description of the computer
-                Write-Host("This machine belongs to the following individual(s)") -ForegroundColor Yellow
-                Search-AD -Computer $ComputerName | Format-List -Property Description
-                    ## Grab make, model, domain, etc from the Computer:
                 Write-Host("The following contains Computer Make/Model information") -ForegroundColor Yellow
                 Get-CimInstance -ClassName Win32_ComputerSystem -ComputerName $ComputerName | Format-List -Property Name,Manufacturer,Model
                     ## Grab OS and build number
@@ -60,14 +55,7 @@ param(
                     }
                     ## Use Quser to grab logon information
                 Write-Host("The following user accounts are logged in currently") -ForegroundColor Yellow
-                $computer = Get-CimInstance Win32_ComputerSystem -computername $ComputerName -ErrorAction SilentlyContinue
-                if ($computer.username) {
-	                $loggedOnUser = $computer.UserName.trimStart("FSO\")
-                    Get-ADUser $loggedOnUser | Format-List -Property Name,SamAccountName
-                }
-                else{
-                    quser /server:$ComputerName
-                }
+                Quser /server:$ComputerName
             }
         else {
             Write-Error ("Could not connect to {0}, verify the computer is on and connected to the network." -f $ComputerName)
