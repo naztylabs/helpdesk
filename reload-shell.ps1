@@ -11,11 +11,11 @@ Pwsh being Windows PowerShell. Core being PowerShell Core
 .Parameter Credential
 The elevated account you wish to open the shell as. 
 .Example
-    PS C:\>reload-shell -credential latylernazifi
+    PS C:\>reload-shell -credential Local.Admin
 .Example
-    PS C:\>reload-shell -credential latylernazifi -version core
+    PS C:\>reload-shell -credential Local.Admin -version core
 .Notes
-    Created by Tyler Nazifi
+    Created by Tyler Nazifi. I made this because I got tired of having to reopen PowerShell and dump in my credentials every time I added a function to my PS Profile.
 #>
 
 [CmdletBinding()]
@@ -35,7 +35,7 @@ param(
     process{
         if($Version -like 'pwsh'){
             Write-Host ("Starting Windows PowerShell")
-                start-process PowerShell -Credential FSO\$Credential
+                start-process PowerShell -Credential $Credential
                 exit       
         }
         else{if($version -like 'core'){
