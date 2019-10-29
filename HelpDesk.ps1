@@ -1,6 +1,4 @@
-Import-Module \\fso\core\Scripts\include\Get_Functions.psm1
-Import-Module \\fso\core\Scripts\include\FSOAD_Functions.psm1
-Import-Module \\FSO0360\C$\Users\latylernazifi\Documents\PowerShell\Data.psm1
+## In this current form the function wont work. I'm working on creating a sister PS file for this script where the functions for buttons will live. 
 
 Function HelpDesk{
 [reflection.assembly]::loadwithpartialname("System.Windows.Forms") | Out-Null
