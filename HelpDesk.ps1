@@ -1,4 +1,5 @@
-## In this current form the function wont work. I'm working on creating a sister PS file for this script where the functions for buttons will live. 
+## In this current form the function has limited support. I'm working on creating a sister PS file for this script where the functions for buttons will live. 
+Import-Module data.psm1
 
 Function HelpDesk{
 [reflection.assembly]::loadwithpartialname("System.Windows.Forms") | Out-Null
@@ -79,7 +80,7 @@ $DataBox.Size                    = New-Object System.Drawing.Size(500,250)
 $DataBox.location                = New-Object System.Drawing.Point(50,250)
 $DataBox.Font                    = 'Microsoft Sans Serif,10'
 
-$Form.controls.AddRange(@($Label1,$Reset,$SCT,$SAD,$Data,$SCTL,$RDP,$ComputerText, $DataBox))
+$Form.controls.AddRange(@($Label1,$Reset,$SCT,$SAD,$Data,$SCTL,$RDP,$ComputerText,$DataBox))
 
     $SCT.Add_MouseClick({  
         Set-ComputerTemplate -ComputerName $ComputerText.Text -Template D
@@ -100,7 +101,7 @@ $Form.controls.AddRange(@($Label1,$Reset,$SCT,$SAD,$Data,$SCTL,$RDP,$ComputerTex
     })
 
     $RDP.Add_MouseClick({  
-        RDPME $ComputerText.Text
+        rdp $ComputerText.Text
     })
 
     $Reset.Add_MouseClick({
