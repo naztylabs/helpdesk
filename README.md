@@ -12,3 +12,4 @@ Say-RemoteText is for friday fun days. This came from a Reddit thread and ever s
 
 Show-LoggedonUser leverages QUser to pull the currently logged in user on a machine. It will also display whether the user is actively using the machine, and what time they last logged in. The ID column can then be used with Remote-Logoff to kick the user off remotely.
 
+WhatIs is a data gathering function. It can be modified to be used with a database to log information about a specific computer, or it can be used to quickly identify what a computer is. It'll bring back BIOS, Computer make/model, Serial, Logged in user as well as monitor information. Currently, I'm adapting the command to work with Helpdesk.ps1 as a 'Get-Data' button to quickly grab and display information from a machine. 
