@@ -31,6 +31,7 @@ param(
     Process {
         Write-Host ("Checking connection to {0}" -f $ComputerName) -ForegroundColor Yellow
             if(Test-Connection -ComputerName $ComputerName -Count 1 -Quiet) {
+                    ## Grab Computer Make and Model
                 Write-Host("The following contains Computer Make/Model information") -ForegroundColor Yellow
                 Get-CimInstance -ClassName Win32_ComputerSystem -ComputerName $ComputerName | Format-List -Property Name,Manufacturer,Model
                     ## Grab OS and build number
