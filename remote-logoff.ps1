@@ -14,7 +14,7 @@
     PS C:\>Logoff /Server:ComputerName 3
     *In these examples please note that ComputerName refers to the computer you're contacting and the number 3 is a session ID that is displayed by the Qwinsta or Show-LoggedOnUser command.*
 .Notes
-    Created by Tyler Nazifi. With great power comes great responsibility. Verify that logging off the user will cause no damage as the Logoff command does not always wait for documents to save.
+    Created by Nazty_Labs. With great power comes great responsibility. Verify that logging off the user will cause no damage as the Logoff command does not always wait for documents to save.
 #>
 
 [CmdletBinding(
