@@ -18,13 +18,12 @@ Function Show-LoggedOnUser {
     PS C:\>Show-LoggedOnUser IPAddress
 .Notes
     Common errors:
-        If Qwinsta reports: No session exists for *; this means that the ping to the computer was successful however there are no logged in user sessions. Verify that the computer is turned on and has a logged in user. 
-        
+        If Qwinsta reports: No session exists for *; this means that the ping to the computer was successful however there are no logged in user sessions. Verify that the computer is turned on and has a logged in user.  
         If Qwinsta reports Error 5: RPC server is unavailable; this means that the ping is successful however quser or qwinsta does not recognize your account as being elevated. The only work around seems to be to try again in an elevated user session (i.e. sign in with your LA or DA)
-        
-        If Quser reports Error enumerating sessionnames/Error 1722 RPC server is unavailable; this means that the ping is successful however quser does not recognize your account as being elevated. 
-        
+        If Quser reports Error enumerating sessionnames/Error 1722 RPC server is unavailable; this means that the ping is successful however quser does not recognize your account as being elevated.
         Will test to see if possibly entering a PSSession solves these errors. 
+        
+        Created by Nazty_Labs
 #>
 
 [CmdletBinding()]
