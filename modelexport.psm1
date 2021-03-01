@@ -11,7 +11,7 @@ function modelexport{
 	.Example
 		PS C:\>modelexport
 	.Notes
-		Created by Tyler Nazifi - 03/1/2021
+		Created by Nazty_Labs - 03/1/2021
 #>
 
 ## Create an object of all AD Computers.
